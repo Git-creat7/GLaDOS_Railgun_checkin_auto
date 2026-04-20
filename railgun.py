@@ -16,7 +16,6 @@ def start():
     global sendContent, all_get_points
 
     # railgun 域名与接口
-    # 如果后续发现接口路径不同，只需要改这两行
     url = "https://railgun.info/api/user/checkin"
     url2 = "https://railgun.info/api/user/status"
 
@@ -56,7 +55,7 @@ def start():
             )
 
             if checkin.status_code != 200 or state.status_code != 200:
-                msg = f"请求失败 checkin={{checkin.status_code}}, status={{state.status_code}}"
+                msg = f"请求失败 checkin={checkin.status_code}, status={state.status_code}"
                 print(msg)
                 sendContent += msg + "\n"
                 continue
@@ -67,7 +66,7 @@ def start():
             email = state_json.get("data", {}).get("email", "未知账号")
             time_str = str(state_json.get("data", {}).get("leftDays", "未知")).split(".")[0]
 
-            mess = checkin_json.get("message", f"签到返回: {{checkin_json}}")
+            mess = checkin_json.get("message", f"签到返回: {checkin_json}")
 
             # 尝试提取本次获得点数
             point_get = "0"
@@ -97,13 +96,13 @@ def start():
             sendContent += info + "\n"
 
         except Exception as e:
-            err = f"账号处理出错: {{e}}"
+            err = f"账号处理出错: {e}"
             print(err)
             sendContent += err + "\n"
             continue
 
     if all_get_points:
-        push_title = f"Railgun签到获得: {{', '.join(all_get_points)}}"
+        push_title = f"Railgun签到获得: {', '.join(all_get_points)}"
 
     if sckey:
         push_url = "http://www.pushplus.plus/send"
@@ -112,7 +111,7 @@ def start():
             requests.post(push_url, data=json.dumps(data), headers={"Content-Type": "application/json"}, timeout=20)
             print("推送已发出")
         except Exception as e:
-            print(f"推送失败: {{e}}")
+            print(f"推送失败: {e}")
     else:
         print("未配置 PUSHPLUS_TOKEN，跳过推送")
 

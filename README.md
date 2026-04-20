@@ -2,12 +2,15 @@
 
 原仓库地址：https://github.com/lukesyy/glados_automation
 
-复制了一个仓库，进行了些修改，防止原仓库被封
+复制了一个仓库，进行了些修改
 
 环境变量：`GLADOS_COOKIE`（必要） 和 `PUSHPLUS_TOKEN`（非必要）
 
 `GLADOS_COOKIE`多个账号需使用 '&' 隔开，示例：cookie&cookie
 
+
+# Railgun 自动签到（迁移之后的网站）
+注意事项同上...
 
 
 # Github Actions

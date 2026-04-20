@@ -1,4 +1,4 @@
-name: 开始每日签到Glados
+name: 开始每日签到Railgun
 
 on:
   workflow_dispatch:

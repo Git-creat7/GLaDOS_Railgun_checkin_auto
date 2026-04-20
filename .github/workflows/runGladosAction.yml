@@ -24,7 +24,6 @@ jobs:
       - name: Run checkin
         run: |
           python3 glados.py
-          python3 railgun.py
         env: 
           GLADOS_COOKIE: ${{ secrets.GLADOS_COOKIE }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}

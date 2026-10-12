@@ -1,12 +1,7 @@
-name: 开始每日签到Railgun
+name: 单独运行Railgun签到
 
 on:
   workflow_dispatch:
-  schedule:
-    # UTC 2点30分
-    - cron: 30 2 * * *
-  watch:
-    types: [started]
 
 jobs:
   build:

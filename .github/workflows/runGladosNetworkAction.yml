@@ -1,12 +1,7 @@
-name: 开始每日签到GladosNetwork
+name: 单独运行GladosNetwork签到
 
 on:
   workflow_dispatch:
-  schedule:
-    # UTC 3点30分(北京时间 11点30分)
-    - cron: 30 3 * * *
-  watch:
-    types: [started]
 
 jobs:
   build:

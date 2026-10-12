@@ -46,11 +46,12 @@
    - 在左侧导航栏找到 `Secrets and variables` -> `Actions`。
    - 点击 `New repository secret`，依次添加上面表格中所需的变量名和对应值。
 3. **配置工作流**：
-   - 工作流文件位于 `.github/workflows/` 目录下（`runGladosAction.yml`、`runGladosNetworkAction.yml`、`runRailgunAction.yml`）。
+   - 默认启用每日聚合工作流 `.github/workflows/runAllCheckinAction.yml`，每天自动一次性完成所有 GLaDOS 与 Railgun 账号签到，并通过 PushPlus 合并推送一条汇总通知。
+   - 若需单独测试单站点，可在 Actions 页面手动运行 `runGladosAction.yml` 或 `runRailgunAction.yml`。
 4. **激活并运行**：
    - 切换到仓库的 `Actions` 标签页，点击 `I understand my workflows, go ahead and enable them` 允许运行。
-   - 回到仓库主页，点击右上角点亮 **Star (⭐)** 或在 Actions 页面点击 `Run workflow` 手动触发首次运行。
-   - 之后 Actions 会按照设定的 Cron 时间每天定时为你自动签到。
+   - 在 Actions 页面找到 `每日聚合签到 (GLaDOS + Railgun)`，点击 `Run workflow` 即可手动触发测试。
+   - 之后 Actions 会按照设定的 Cron 时间每天定时为你自动聚合签到。
 
 ### 方案二：使用青龙面板
 

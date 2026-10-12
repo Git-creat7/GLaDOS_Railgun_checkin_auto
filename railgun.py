@@ -5,12 +5,16 @@ sckey = os.environ.get("PUSHPLUS_TOKEN", "")
 sendContent = ''
 all_get_points = []
 
-# railgun 账号 cookie，多个账号用 & 分隔
-cookies = os.environ.get("RAILGUN_COOKIE", "").split("&")
-
-if not cookies or cookies[0] == "":
+# railgun 账号 cookie，多个账号支持换行符或 & 分隔
+raw_cookie = os.environ.get("RAILGUN_COOKIE", "").strip()
+if not raw_cookie:
     print('未获取到 RAILGUN_COOKIE 变量')
     exit(0)
+
+if "&" in raw_cookie:
+    cookies = raw_cookie.split("&")
+else:
+    cookies = [line.strip() for line in raw_cookie.split('\n') if line.strip()]
 
 def start():
     global sendContent, all_get_points
@@ -27,7 +31,7 @@ def start():
     push_title = "Railgun签到结果"
 
     for cookie in cookies:
-        cookie = cookie.strip()
+        cookie = re.sub(r'^(?:cookie|Cookie)\s*:\s*', '', cookie.strip())
         if not cookie:
             continue
         try:

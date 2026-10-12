@@ -358,9 +358,7 @@ def run_checkin(domains=None, cookie_env_priority=None):
 
     # 微信 PushPlus 推送
     send_content = "\n".join(send_lines)
-    push_title = f"GLaDOS签到: 成功{success_count}/{len(cookies)}"
-    if all_points_gained:
-        push_title += f" (获得: {', '.join(all_points_gained)})"
+    push_title = ", ".join(all_points_gained) if all_points_gained else "0点"
 
     if sckey:
         try:

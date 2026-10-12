@@ -106,7 +106,9 @@ def start():
             continue
 
     if all_get_points:
-        push_title = f"Railgun签到获得: {', '.join(all_get_points)}"
+        push_title = ", ".join(all_get_points)
+    else:
+        push_title = "0点"
 
     if sckey:
         push_url = "http://www.pushplus.plus/send"

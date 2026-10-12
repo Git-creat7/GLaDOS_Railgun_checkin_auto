@@ -195,7 +195,8 @@ def run_all():
         )
 
     send_content = "\n".join(content_lines)
-    push_title = f"【签到聚合】成功 {success_count}/{total_accounts}"
+    points_summary = [f"{r['point_get']}点" for r in all_results]
+    push_title = ", ".join(points_summary) if points_summary else "0点"
 
     # PushPlus 统一聚合推送
     if sckey:
